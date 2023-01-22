@@ -1,57 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlarabi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/19 15:09:22 by rlarabi           #+#    #+#             */
-/*   Updated: 2023/01/22 21:32:07 by rlarabi          ###   ########.fr       */
+/*   Created: 2023/01/22 21:39:59 by rlarabi           #+#    #+#             */
+/*   Updated: 2023/01/22 21:51:32 by rlarabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../srcs/so_long.h"
 
-static int	count_numbers(long l)
+char	*ft_strjoin(char *s1, char *s2)
 {
-	int	count;
-
-	count = 0;
-	if (l <= 0)
-		count++;
-	while (l)
-	{
-		l /= 10;
-		count++;
-	}
-	return (count);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*ret;
-	long	l;
+	int		a_len;
+	int		b_len;
 	int		i;
-	int		len;
+	char	*ret;
 
-	l = (long)n;
-	i = 0;
-	len = count_numbers(l);
-	ret = (char *)malloc(sizeof(char) * len + 1);
+	if (!s1)
+		return (ft_strdup(s2));
+	a_len = ft_strlen((char *)s1);
+	b_len = ft_strlen((char *)s2);
+	i = -1;
+	ret = (char *)malloc(sizeof(char) * (a_len + b_len + 1));
 	if (!ret)
 		return (0);
-	ret[len] = '\0';
-	if (l == 0)
-		ret[0] = 48;
-	if (l < 0)
-	{
-		ret[i] = '-';
-		l *= -1;
-	}
-	while (l > 0)
-	{
-		ret[len - ++i] = (l % 10) + 48;
-		l /= 10;
-	}
+	while (s1[++i])
+		ret[i] = s1[i];
+	i = -1;
+	while (s2[++i])
+		ret[a_len + i] = s2[i];
+	ret[a_len + i] = '\0';
 	return (ret);
 }

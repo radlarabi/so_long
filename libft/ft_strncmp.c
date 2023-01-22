@@ -1,36 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rlarabi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/01/14 12:54:08 by rlarabi           #+#    #+#             */
-/*   Updated: 2023/01/22 21:28:58 by rlarabi          ###   ########.fr       */
+/*   Created: 2023/01/22 21:39:05 by rlarabi           #+#    #+#             */
+/*   Updated: 2023/01/22 21:51:34 by rlarabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../srcs/so_long.h"
 
-int	main(int ac, char **av)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	int		fd;
-	t_game	map;
+	unsigned int	i;
+	unsigned char	*c1;
+	unsigned char	*c2;
 
-	if (ac != 2)
-		return (0);
-	if (!check_args(av))
-		return (0);
-	fd = open(av[1], O_RDONLY);
-	if (fd == -1)
+	c1 = (unsigned char *)s1;
+	c2 = (unsigned char *)s2;
+	i = 0;
+	while (i < n && (c1[i] != '\0' || c2[i] != '\0'))
 	{
-		write(2, "Error file\n", 11);
-		return (0);
+		if (c1[i] != c2[i])
+			return (c1[i] - c2[i]);
+		i++;
 	}
-	map = read_map(fd);
-	if (!check_map(map))
-		return (0);
-	render_image(map);
-	free_2d_table(map.map);
 	return (0);
 }

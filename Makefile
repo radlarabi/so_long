@@ -10,13 +10,18 @@ SRCS =  srcs/main.c \
 		get_next_line/ft_itoa.c \
 		get_next_line/get_next_line.c \
 		get_next_line/get_next_line_utils.c \
+		libft/ft_strjoin.c \
+		libft/ft_split.c \
+		libft/ft_strncmp.c \
+		libft/ft_substr.c \
+
 
 NAME = so_long
 CC = cc
 RM = rm -rf
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
-O_SRCS = $(SRCS:%.c=%.o obj)
+O_SRCS = $(SRCS:%.c=%.o)
 
 all: $(NAME)
 

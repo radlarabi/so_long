@@ -6,36 +6,36 @@
 /*   By: rlarabi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/20 22:33:56 by rlarabi           #+#    #+#             */
-/*   Updated: 2023/01/22 14:27:18 by rlarabi          ###   ########.fr       */
+/*   Updated: 2023/01/22 21:29:36 by rlarabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int clear(int key, t_image_data *param)
+int	clear(int key, t_image_data *param)
 {
-    if (key == 53)
-    {
-        mlx_destroy_window(param->mlx, param->mlx_win);
-        exit(0);
-    }
-    return 0;
+	if (key == 53)
+	{
+		mlx_destroy_window(param->mlx, param->mlx_win);
+		exit(0);
+	}
+	return (0);
 }
 
-int exit_win(t_image_data *param)
+int	exit_win(t_image_data *param)
 {
-    mlx_destroy_window(param->mlx, param->mlx_win);
-    exit(0);
-    return 0;
+	mlx_destroy_window(param->mlx, param->mlx_win);
+	exit(0);
+	return (0);
 }
 
-void    swap_elm(char *a, char *b)
+void	swap_elm(char *a, char *b)
 {
-    char c;
+	char	c;
 
-    c = *a;
-    *a = *b;
-    *b = c; 
+	c = *a;
+	*a = *b;
+	*b = c;
 }
 
 void	free_2d_table(char **t)

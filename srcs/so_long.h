@@ -6,7 +6,7 @@
 /*   By: rlarabi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/14 13:02:11 by rlarabi           #+#    #+#             */
-/*   Updated: 2023/01/22 14:23:42 by rlarabi          ###   ########.fr       */
+/*   Updated: 2023/01/22 22:16:25 by rlarabi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,8 @@ typedef struct s_game
 	char	**map;
 	int		emptie;
 	int		timer1;
-	int		timer2;
+	int		index1;
+	int		index2;
 	char	*origin_map;
 }			t_game;
 
@@ -59,6 +60,7 @@ int			ft_strncmp(const char *s1, const char *s2, size_t n);
 char		*get_next_line(int fd);
 int			ret_line(char *str);
 int			end_line(char *str);
+char		*ft_substr(char const *s, unsigned int start, size_t len);
 size_t		ft_strlen(char const *str);
 char		*ft_strdup(char *s1);
 int			strlen_2d(char **a);
@@ -82,9 +84,8 @@ int			move_up(t_image_data *param, t_key_events events, int *count,
 				int *steps);
 int			move_down(t_image_data *param, t_key_events events, int *count,
 				int *steps);
-char		**init_fire();
-char		**init_coins();
-char		**init_player();
+char		**init_fire(void);
+char		**init_coins(void);
 int			check_args(char **av);
 t_game		read_map(int fd);
 int			check_caracters(char **map);
@@ -96,7 +97,7 @@ int			check_map(t_game m);
 void		display_map_in_window(t_image_data *i_data);
 void		render_image(t_game map);
 int			animate(t_image_data *param);
-void		display_animation(t_image_data *param);
+void		display_animation(t_image_data *param, int , int b);
 int			press_key(int key, t_image_data *param);
 void		swap_images(t_image_data *param, t_pos p1, t_pos p2);
 int			clear(int key, t_image_data *param);
